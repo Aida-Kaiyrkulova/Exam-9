@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import './Header.css';
+import { NavLink } from "react-router-dom";
+import "./Header.css";
 
 const Header = () => {
   return (
@@ -10,17 +10,17 @@ const Header = () => {
             Finance Tracker
           </NavLink>
           <ul className="navbar-nav">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/categories">
-                  Categories
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/add">
-                  Add
-                </NavLink>
-              </li>
-            </ul>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/categories">
+                Categories
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/add">
+                Add
+              </NavLink>
+            </li>
+          </ul>
         </div>
       </nav>
     </>
