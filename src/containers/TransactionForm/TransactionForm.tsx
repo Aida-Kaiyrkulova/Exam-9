@@ -38,21 +38,19 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
       return;
     }
 
+    const transactionData = { amount, category, type };
+
     if (transactionToEdit) {
       dispatch(
         editTransaction({
           id: transactionToEdit.id,
-          amount,
-          category,
-          type,
+          ...transactionData,
         }),
       );
     } else {
       dispatch(
         addTransaction({
-          amount,
-          category,
-          type,
+          ...transactionData,
         }),
       );
     }

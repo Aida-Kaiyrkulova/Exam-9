@@ -25,7 +25,6 @@ export const addTransaction = createAsyncThunk<
       ...transaction,
       createdAt,
     });
-    console.log("Response from Firebase:", response);
     return {
       id: response.data.name,
       ...transaction,
@@ -55,5 +54,6 @@ export const editTransaction = createAsyncThunk<
     return { id, amount, category, type };
   } catch (error) {
     console.error("Error editing transaction:", error);
+    throw new Error("Failed to update transaction");
   }
 });

@@ -21,16 +21,6 @@ const MainPage: React.FC = () => {
     dispatch(fetchTransactions());
   }, [dispatch]);
 
-  const openModalToAdd = () => {
-    setTransactionToEdit(null);
-    setShowModal(true);
-  };
-
-  const openModalToEdit = (transaction: Transaction) => {
-    setTransactionToEdit(transaction);
-    setShowModal(true);
-  };
-
   const closeModal = () => {
     setShowModal(false);
     setTransactionToEdit(null);
@@ -40,7 +30,7 @@ const MainPage: React.FC = () => {
     <div className="main-page">
       {loading && <div>Loading...</div>}
       {error && <div className="error">Error: {error}</div>}
-      <TransactionList onEditTransaction={openModalToEdit} />
+      <TransactionList />
       {showModal && (
         <Modal
           show={showModal}
