@@ -6,6 +6,7 @@
   border: none;
   font-size: 16px;
   transition: background-color 0.3s ease;
+  margin-left: 10px;
 }
 
 .btn:hover {
@@ -85,4 +86,77 @@
 .category-item .expense-type {
   color: #dc3545;
   font-weight: bold;
+}
+.transaction-list {
+  padding: 2rem;
+  font-family: "Arial", sans-serif;
+}
+
+.transactions-container {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.transactions-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.total-balance {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.transactions-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.transaction-item {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.transaction-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-date {
+  font-size: 16px;
+  color: #555;
+}
+
+.transaction-category {
+  font-size: 16px;
+  color: #555;
+}
+
+.transaction-amount {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+.transaction-amount.income {
+  color: green;
+}
+
+.transaction-amount.expense {
+  color: red;
+}
+
+.loading {
+  color: #007bff;
+  font-size: 16px;
+}
+
+.error {
+  color: red;
+  font-size: 16px;
 }

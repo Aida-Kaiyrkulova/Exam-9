@@ -1,30 +1,27 @@
 import "../../App.css";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import {
-  fetchCategories,
-  updateCategory,
-  addCategory,
-  deleteCategory,
-} from "../../store/slices/categorySlice";
+
 import { Category } from "../../types";
 import Modal from "../../components/Modal/Modal";
-
+import {
+  addCategory,
+  deleteCategory,
+  fetchCategories,
+  updateCategory,
+} from "../../store/thunks/categoryThunks.ts";
 const CategoryPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const categories = useAppSelector((state) => state.categories.categories);
-
   const [showModal, setShowModal] = useState(false);
   const [categoryName, setCategoryName] = useState("");
   const [categoryType, setCategoryType] = useState<"income" | "expense">(
     "income",
   );
   const [editingCategory, setEditingCategory] = useState<Category | null>(null);
-
   useEffect(() => {
     dispatch(fetchCategories());
   }, [dispatch]);
-
   const handleAddCategory = () => {
     const newCategory = {
       id: "",
@@ -33,7 +30,7 @@ const CategoryPage: React.FC = () => {
     };
     dispatch(addCategory(newCategory))
       .then(() => {
-         setCategoryName("");
+        setCategoryName("");
         setCategoryType("income");
         setShowModal(false);
       })
@@ -41,14 +38,12 @@ const CategoryPage: React.FC = () => {
         console.error("Error adding category:", err);
       });
   };
-
   const handleEditCategory = (category: Category) => {
     setEditingCategory(category);
     setCategoryName(category.name);
     setCategoryType(category.type);
     setShowModal(true);
   };
-
   const handleUpdateCategory = () => {
     if (editingCategory) {
       dispatch(
@@ -64,22 +59,19 @@ const CategoryPage: React.FC = () => {
       setShowModal(false);
     }
   };
-
   const handleDeleteCategory = (id: string) => {
-    if (window.confirm('Are you sure you want to delete this category?')) {
-      dispatch(deleteCategory(id))
-        .catch((err) => console.error('Error deleting category:', err));
+    if (window.confirm("Are you sure you want to delete this category?")) {
+      dispatch(deleteCategory(id)).catch((err) =>
+        console.error("Error deleting category:", err),
+      );
     }
   };
-
-
   const closeModal = () => {
     setShowModal(false);
     setCategoryName("");
     setCategoryType("income");
     setEditingCategory(null);
   };
-
   return (
     <div className="category-container">
       <div className="category-top">
@@ -88,7 +80,6 @@ const CategoryPage: React.FC = () => {
           Add Category
         </button>
       </div>
-
       <ul className="category-list">
         {categories.map((category) => (
           <li key={category.id} className="category-item">
@@ -119,7 +110,6 @@ const CategoryPage: React.FC = () => {
           </li>
         ))}
       </ul>
-
       <Modal
         show={showModal}
         title={editingCategory ? "Edit Category" : "Add New Category"}
@@ -154,5 +144,4 @@ const CategoryPage: React.FC = () => {
     </div>
   );
 };
-
 export default CategoryPage;

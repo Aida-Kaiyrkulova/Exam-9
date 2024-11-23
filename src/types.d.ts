@@ -6,7 +6,8 @@ export interface Category {
 
 export interface Transaction {
   id: string;
-  categoryId: string;
   amount: number;
+  category: string;
+  type: "income" | "expense";
   createdAt: string;
 }

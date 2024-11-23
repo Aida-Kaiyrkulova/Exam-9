@@ -15,11 +15,6 @@ const Header = () => {
                 Categories
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/add">
-                Add
-              </NavLink>
-            </li>
           </ul>
         </div>
       </nav>
